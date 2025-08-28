@@ -1,23 +1,23 @@
 import { Outlet } from "react-router";
-import AdminLayout from "./AdminLayout";
+import Sidebar from "./header/Sidebar"; // بهتره اسمش عوض بشه به Sidebar
 import Footer from "./footer/footer";
-import Header from "./header/Header";
 
 export default function Main({ title }) {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* بخش اصلی */}
+    <div className="flex min-h-screen flex-col">
+      {/* سایدبار و محتوا در یک ردیف */}
       <div className="flex flex-1">
-        {/* سایدبار */}
-        <Header />
+        {/* سایدبار — عرض ثابت */}
+        <Sidebar />
 
-        {/* محتوای اصلی */}
-        <div className="flex-1 p-4">
+        {/* بخش اصلی — قسمتی که تغییر می‌کنه */}
+        <main className="flex-1 p-6 bg-gray-50">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">{title}</h1>
           <Outlet />
-        </div>
+        </main>
       </div>
 
-      {/* فوتر */}
+      {/* فوتر — در پایین */}
       <Footer />
     </div>
   );
