@@ -1,0 +1,71 @@
+# -----------------------
+# فایل‌های سیستم عامل
+# -----------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------
+# فایل‌های Node.js
+# -----------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnpm-debug.log
+
+# -----------------------
+# فایل‌های Strapi
+# -----------------------
+# فایل‌های دیتابیس لوکال (SQLite)
+.db/
+*.db
+*.db-journal
+
+# پوشه build و کش
+build/
+.cache/
+.cache/*
+!.gitkeep
+
+# تنظیمات محلی
+config/env/
+!.gitkeep
+config/admin.js
+config/server.js
+
+# فایل‌های آپلود شده (اگر داخل پروژه ذخیره شوند)
+/uploads/
+public/uploads/
+
+# -----------------------
+# فایل‌های محیط (Environment)
+# -----------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# -----------------------
+# فایل‌های ادیتور و IDE
+# -----------------------
+*.log
+*.tmp
+*.swp
+.DS_Store
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -----------------------
+# فایل‌های build و اجرا
+# -----------------------
+dist/
+out/
+build/
+.next/
+.nuxt/
+output/
+coverage/
+.nyc_output/
