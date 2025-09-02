@@ -1,26 +1,40 @@
-import Table from '../../components/Table.jsx'
+import { useEffect, useState } from "react";
+import Table from "../../components/Table.jsx";
+import Adminapi from "../../utils/Services/userServices.js";
 
 export default function Users() {
-	const columns = [
-		{ key: 'id', title: 'شناسه' },
-		{ key: 'name', title: 'نام' },
-		{ key: 'email', title: 'ایمیل' },
-		{ key: 'role', title: 'نقش' },
-	]
+  const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-	const data = [
-		{ id: 'U-1', name: 'حسین بنیادی', email: 'hossein@example.com', role: 'مدیر' },
-		{ id: 'U-2', name: 'علی رضایی', email: 'ali@example.com', role: 'کاربر' },
-		{ id: 'U-3', name: 'نگار موسوی', email: 'negar@example.com', role: 'نویسنده' },
-		{ id: 'U-4', name: 'محمد کاظمی', email: 'mk@example.com', role: 'ویرایشگر' },
-	]
+  useEffect(() => {
+    Adminapi.get("/users")
+      .then((res) => {
+        setUser(res.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching users:", error);
+        setLoading(false);
+      });
+  }, []);
 
-	return (
-		<div className="space-y-4">
-			<h2 className="text-lg font-semibold">کاربران</h2>
-			<Table columns={columns} data={data} />
-		</div>
-	)
+  if (loading) return <p>در حال بارگذاری...</p>;
+
+  const columns = [
+    { key: "id", title: "شناسه" },
+    { key: "name", title: "نام" },
+    { key: "email", title: "ایمیل" },
+    { key: "phonenumber", title: "شماره موبایل" },
+    { key: "status", title: "وضعیت" },
+    <button></button>,
+  ];
+
+  const data = user;
+
+  return (
+    <div className="space-y-4">
+      <h2 className="text-lg font-semibold">کاربران</h2>
+      <Table columns={columns} data={data} />
+    </div>
+  );
 }
-
-
